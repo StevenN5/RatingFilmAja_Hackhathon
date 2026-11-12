@@ -2,11 +2,11 @@ const STORAGE_KEY = 'ratingFilmAjaMovies';
 const DEFAULT_POSTER = 'https://placehold.co/400x600/302641/f7f3ff?text=Movie+Poster';
 
 const defaultMovies = [
-  { id: 1, title: 'The Dark Knight', year: 2008, genre: 'Action', rating: 9.0, description: 'Batman menghadapi ancaman baru dari Joker, sosok kriminal yang ingin menjerumuskan Gotham ke dalam kekacauan. Sebuah kisah tentang pilihan, keadilan, dan batas antara pahlawan dan penjahat.', poster: '', posterClass: 'poster-blue' },
-  { id: 2, title: 'Se7en', year: 1995, genre: 'Thriller', rating: 8.6, description: 'Dua detektif menyelidiki rangkaian pembunuhan yang dirancang berdasarkan tujuh dosa mematikan. Penyelidikan membawa mereka semakin dekat pada pelaku dan rahasia yang mengerikan.', poster: '', posterClass: 'poster-thriller' },
-  { id: 3, title: 'The Shining', year: 1980, genre: 'Horror', rating: 8.4, description: 'Sebuah keluarga menjadi penjaga hotel terpencil selama musim dingin. Ketika keadaan semakin terisolasi, sang ayah mulai mengalami perubahan perilaku yang mengancam keluarganya.', poster: '', posterClass: 'poster-horror' },
-  { id: 4, title: 'The Shawshank Redemption', year: 1994, genre: 'Drama', rating: 9.3, description: 'Andy Dufresne, seorang bankir yang dihukum atas kejahatan yang tidak ia lakukan, membangun persahabatan dan mempertahankan harapan selama menjalani masa tahanan.', poster: '', posterClass: 'poster-gold' },
-  { id: 5, title: 'The Godfather', year: 1972, genre: 'Crime', rating: 9.2, description: 'Michael Corleone perlahan terlibat lebih dalam dalam keluarga mafia yang dipimpin ayahnya. Film ini menggambarkan kekuasaan, kesetiaan, keluarga, dan dunia kejahatan terorganisasi.', poster: '', posterClass: 'poster-crime' }
+  { id: 1, title: 'The Dark Knight', year: 2008, genre: 'Action', rating: 9.0, description: 'Batman menghadapi ancaman baru dari Joker, sosok kriminal yang ingin menjerumuskan Gotham ke dalam kekacauan. Sebuah kisah tentang pilihan, keadilan, dan batas antara pahlawan dan penjahat.', poster: 'asset/download.jpg', posterClass: 'poster-blue' },
+  { id: 2, title: 'Se7en', year: 1995, genre: 'Thriller', rating: 8.6, description: 'Dua detektif menyelidiki rangkaian pembunuhan yang dirancang berdasarkan tujuh dosa mematikan. Penyelidikan membawa mereka semakin dekat pada pelaku dan rahasia yang mengerikan.', poster: 'asset/download (1).jpg', posterClass: 'poster-thriller' },
+  { id: 3, title: 'The Shining', year: 1980, genre: 'Horror', rating: 8.4, description: 'Sebuah keluarga menjadi penjaga hotel terpencil selama musim dingin. Ketika keadaan semakin terisolasi, sang ayah mulai mengalami perubahan perilaku yang mengancam keluarganya.', poster: 'asset/download (2).jpg', posterClass: 'poster-horror' },
+  { id: 4, title: 'The Shawshank Redemption', year: 1994, genre: 'Drama', rating: 9.3, description: 'Andy Dufresne, seorang bankir yang dihukum atas kejahatan yang tidak ia lakukan, membangun persahabatan dan mempertahankan harapan selama menjalani masa tahanan.', poster: 'asset/download (3).jpg', posterClass: 'poster-gold' },
+  { id: 5, title: 'The Godfather', year: 1972, genre: 'Crime', rating: 9.2, description: 'Michael Corleone perlahan terlibat lebih dalam dalam keluarga mafia yang dipimpin ayahnya. Film ini menggambarkan kekuasaan, kesetiaan, keluarga, dan dunia kejahatan terorganisasi.', poster: 'asset/download (4).jpg', posterClass: 'poster-crime' }
 ];
 
 const genreDescriptions = {
@@ -268,9 +268,8 @@ document.getElementById('movieForm').addEventListener('submit', function(event) 
   };
 
   const confirmationMessage = oldMovie
-    ? `Apakah data film berikut sudah benar dan ingin disimpan?\\n\\nJudul: ${title}\\nTahun: ${year}\\nGenre: ${genre}\\nRating: ${rating}/10\\n\\nPilih OK untuk menyimpan perubahan.`
-    : `Apakah data film berikut sudah benar dan ingin ditambahkan?\\n\\nJudul: ${title}\\nTahun: ${year}\\nGenre: ${genre}\\nRating: ${rating}/10\\n\\nPilih OK untuk menambahkan film.`;
-
+  ? `Apakah data film berikut sudah benar dan ingin disimpan?\n\nJudul: ${title}\nTahun: ${year}\nGenre: ${genre}\nRating: ${rating}/10\n\nPilih OK untuk menyimpan perubahan.`
+  : `Apakah data film berikut sudah benar dan ingin ditambahkan?\n\nJudul: ${title}\nTahun: ${year}\nGenre: ${genre}\nRating: ${rating}/10\n\nPilih OK untuk menambahkan film.`;
   if (!confirm(confirmationMessage)) return;
 
   if (oldMovie) {
@@ -296,7 +295,7 @@ function deleteMovie(movieId) {
   });
   if (!movie) return;
 
-  const confirmed = confirm(`Apakah kamu yakin ingin menghapus film "${movie.title}"?\\nTindakan ini tidak dapat dibatalkan.`);
+  const confirmed = confirm(`Apakah kamu yakin ingin menghapus film "${movie.title}"? \n Tindakan ini tidak dapat dibatalkan.`);
   if (!confirmed) return;
 
   movies = movies.filter(function(item) {
